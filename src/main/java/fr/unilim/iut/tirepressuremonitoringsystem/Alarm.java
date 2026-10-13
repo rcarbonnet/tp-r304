@@ -4,6 +4,7 @@ public class Alarm
 {
     private final double lowThreshold = 17;
     private final double highThreshold = 21;
+    private SafetyRange safetyRange;
 
     private Sensor sensor;
     private boolean alarmOn;
@@ -11,6 +12,7 @@ public class Alarm
     public Alarm(Sensor sensor) {
 		this.sensor=sensor;
 		this.alarmOn = false;
+		this.safetyRange = new SafetyRange(17,21);
 	}
     
     public Alarm() {
@@ -36,7 +38,7 @@ public class Alarm
 	}
 
 	private boolean isNotSafe(double value) {
-		return value < lowThreshold || highThreshold < value;
+	    return safetyRange.doesNotContain(value);
 	}
 
     public boolean isAlarmOn()
