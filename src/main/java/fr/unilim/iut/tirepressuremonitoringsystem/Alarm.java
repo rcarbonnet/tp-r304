@@ -15,6 +15,12 @@ public class Alarm
 		this.safetyRange = new SafetyRange(17,21);
 	}
     
+    public Alarm(Sensor sensor,SafetyRange safetyRange) {
+    	this.sensor=sensor;
+		this.alarmOn = false;
+		this.safetyRange = safetyRange;
+    }
+    
     public Alarm() {
     	this(new PressureSensor());
        }
